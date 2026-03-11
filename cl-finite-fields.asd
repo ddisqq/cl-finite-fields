@@ -3,7 +3,7 @@
 
 (asdf:defsystem #:cl-finite-fields
   :description "Pure Common Lisp finite field arithmetic for cryptography"
-  :author "CLPIC Project"
+  :author "Parkian Company LLC"
   :license "BSD-3-Clause"
   :version "1.0.0"
   :serial t
