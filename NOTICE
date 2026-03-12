@@ -5,5 +5,4 @@ This software was originally developed as part of the CLPIC (Common Lisp P2P
 Intellectual Property Chain) project and has been extracted as a standalone
 library.
 
-Original source: https://github.com/clpic/clpic
 Extraction: src/crypto/field/
