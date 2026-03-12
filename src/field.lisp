@@ -33,8 +33,19 @@
   "Montgomery R^2 mod p for efficient conversion.")
 
 (defconstant +bls12-381-mont-p-inv+
-  #x89f3fffcfffcfffd
-  "Montgomery -p^(-1) mod 2^64.")
+  (let* ((r (ash 1 384))
+         (p +bls12-381-p+))
+    ;; Compute -p^(-1) mod R using extended GCD inline
+    ;; (modular-inverse not yet defined at load time)
+    (labels ((egcd (a b)
+               (if (zerop b)
+                   (values a 1 0)
+                   (multiple-value-bind (g x y) (egcd b (mod a b))
+                     (values g y (- x (* (floor a b) y)))))))
+      (multiple-value-bind (g x y) (egcd p r)
+        (declare (ignore g y))
+        (mod (- x) r))))
+  "Montgomery -p^(-1) mod R where R = 2^384.")
 
 ;;; secp256k1 field modulus (256 bits)
 (defconstant +secp256k1-p+
