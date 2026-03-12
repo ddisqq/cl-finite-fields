@@ -404,7 +404,7 @@
          (r (montgomery-context-r ctx))
          (p-inv (montgomery-context-p-inv ctx))
          (m (mod (* (mod t-val r) p-inv) r))
-         (result (ash (+ t-val (* m p)) (- (integer-length r) 1))))
+         (result (ash (+ t-val (* m p)) (- 1 (integer-length r)))))
     (if (>= result p)
         (- result p)
         result)))
