@@ -21,4 +21,6 @@
                 :serial t
                 :components ((:file "field-test"))))
   :perform (test-op (o c)
-             (uiop:symbol-call :cl-finite-fields/test '#:run-tests)))
+             (let ((result (uiop:symbol-call :cl-finite-fields/test '#:run-tests)))
+               (unless result
+                 (error "Tests failed")))))
