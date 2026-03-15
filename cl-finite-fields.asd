@@ -6,14 +6,16 @@
 
 (asdf:defsystem #:cl-finite-fields
   :description "Pure Common Lisp finite field arithmetic for cryptography"
-  :author "Parkian Company LLC"
+  :author "Park Ian Co"
   :license "Apache-2.0"
   :version "0.1.0"
   :serial t
   :components ((:file "package")
                (:module "src"
-                :serial t
-                :components ((:file "field"))))
+                :components ((:file "package")
+                             (:file "conditions" :depends-on ("package"))
+                             (:file "types" :depends-on ("package"))
+                             (:file "cl-finite-fields" :depends-on ("package" "conditions" "types"))))))
   :in-order-to ((asdf:test-op (test-op #:cl-finite-fields/test))))
 
 (asdf:defsystem #:cl-finite-fields/test

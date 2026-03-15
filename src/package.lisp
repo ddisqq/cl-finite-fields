@@ -25,7 +25,9 @@ Key Features:
 
 Thread Safety: Yes (all functions are pure)")
   (:export
-   ;; Field Constants
+   #:with-finite-fields-timing
+   #:finite-fields-batch-process
+   #:finite-fields-health-check;; Field Constants
    #:+bls12-381-p+
    #:+bls12-381-p-bits+
    #:+bls12-381-p-bytes+
